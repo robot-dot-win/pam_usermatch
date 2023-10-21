@@ -1,8 +1,8 @@
 ## DESCRIPTION
-pam_usermatch is a Linux PAM module which provides a way to verify username against a regular expression.
+pam_usermatch is a Linux PAM module which provides a way to verify ```username``` against a regular expression that follows Egrep POSIX grammar.
 
-If username matches the regular expression and the second argument is "allow", it succeeds.
-If username does not matches the regular expression and the second argument is "deny", it succeeds.
+If ```username``` matches the regular expression and the second argument is "allow", it succeeds.
+If ```username``` does not matches the regular expression and the second argument is "deny", it succeeds.
 
 On success it returns PAM_SUCCESS, otherwise it returns PAM_AUTH_ERR, PAM_SERVICE_ERR, PAM_BUF_ERR or PAM_PERM_DENIED.
 
