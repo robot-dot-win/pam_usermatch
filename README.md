@@ -10,7 +10,7 @@ No credentials are awarded by this module.
 ## BUILD
 The source program is a single C++11 file.
 
-Dependent package: pam-devel
+Requires: pam-devel
 
 ```bash
 g++ pam_usermatch.cpp -o pam_usermatch.so -shared -lpam -fPIC
