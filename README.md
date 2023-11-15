@@ -13,7 +13,7 @@ The source program is a single C++11 file.
 Requires: pam-devel
 
 ```bash
-g++ pam_usermatch.cpp -o pam_usermatch.so -shared -lpam -fPIC
+g++ pam_usermatch.cpp -o pam_usermatch.so -shared -lpam -fPIC -std=c++11
 ```
 ## USAGE
 ```
