@@ -23,8 +23,8 @@ Note that the ```reg_exp``` argument should be surrounded with square brackets i
 
 Examples:
 ```
-auth   requisite   pam_usermatch.so   [[a-z0-9_\.-\]{2,30}]    allow
-auth   requisite   pam_usermatch.so   .*(\.com|\.net|\.org)$   deny
+auth   requisite   pam_usermatch.so   [^[a-z0-9_\.-\]{2,30}$]    allow
+auth   requisite   pam_usermatch.so   \.(com|net|org)$   deny
 ```
 ## LICENSE
 pam_usermatch is licensed under the [GPLv3](LICENSE) license.
