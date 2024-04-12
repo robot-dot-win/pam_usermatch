@@ -8,12 +8,12 @@ On success it returns PAM_SUCCESS, otherwise it returns PAM_AUTH_ERR, PAM_SERVIC
 
 No credentials are awarded by this module.
 ## BUILD
-The source program is a single C++11 file.
+The source program is a single C++11(and newer) file.
 
 Requires: pam-devel
 
 ```bash
-g++ pam_usermatch.cpp -o pam_usermatch.so -shared -lpam -fPIC -std=c++11
+g++ pam_usermatch.cpp -o pam_usermatch.so -shared -lpam -fPIC
 ```
 ## USAGE
 ```
