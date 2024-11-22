@@ -1,4 +1,4 @@
-//  pam_usermatch module, v1.0.0, 2023-10-21
+//  pam_usermatch module, v1.0.1, 2024-11-22
 //
 //  Copyright (C) 2023, Martin Young <martin_young@live.cn>
 //
@@ -26,8 +26,7 @@ using namespace std;
 
 int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **argv)
 {
-    int retval;
-    bool allow, match;
+    bool allow;
     const char *puser;
     regex user_regex;
 
@@ -49,7 +48,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **ar
         }
     }
 
-    if( (retval=pam_get_item(pamh, PAM_USER, (const void **)&puser)) != PAM_SUCCESS ) {
+    if( int retval=pam_get_item(pamh, PAM_USER, (const void **)&puser); retval != PAM_SUCCESS ) {
         pam_syslog(pamh, LOG_ERR, "Cannot determine username: %s", pam_strerror(pamh, retval));
         return retval;
     }
@@ -65,9 +64,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **ar
         return PAM_SERVICE_ERR;
     }
 
-    match = regex_match(puser, user_regex);
-
-    if( !(allow = allow? match : !match) )
+    if( bool match=regex_match(puser, user_regex); !(allow = allow? match : !match) )
         pam_syslog(pamh, LOG_NOTICE, "Access denied: Invalid username string");
 
     return allow? PAM_SUCCESS:PAM_AUTH_ERR;
